@@ -6,6 +6,7 @@ import SignUp from './components/SignUp'
 import { AuthProvider } from './utils/Auth'
 import PrivateRoute from './components/PrivateRoute'
 import Admin from './components/Admin'
+import 'rsuite/dist/styles/rsuite-default.css'
 function App() {
 	return (
 		<AuthProvider>
