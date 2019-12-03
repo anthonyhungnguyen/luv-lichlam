@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useState } from 'react'
 import { withRouter, Redirect } from 'react-router'
+import { Loader } from 'rsuite'
 import app from '../utils/Base'
 import { AuthContext } from '../utils/Auth'
-import { Form, Icon, Input, Button, Spin } from 'antd'
+import { Form, Icon, Input, Button } from 'antd'
 import './Login.css'
 
 const Login = ({ history, form }) => {
@@ -58,10 +59,13 @@ const Login = ({ history, form }) => {
 			}}
 		>
 			{isLoading ? (
-				<Icon type='loading' style={{ fontSize: 24 }} spin />
+				<Loader backdrop content='chuyển trang...' vertical />
 			) : (
-				<div>
-					<h1>Log in</h1>
+				<>
+					<img
+						src={require('./logo.jpg')}
+						style={{ maxWidth: '200px', margin: 'center' }}
+					/>
 					<Form onSubmit={handleLogin} className='login-form'>
 						<Form.Item>
 							{getFieldDecorator('username', {
@@ -96,11 +100,11 @@ const Login = ({ history, form }) => {
 								htmlType='submit'
 								className='login-form-button'
 							>
-								Log in
+								Đăng nhập
 							</Button>
 						</Form.Item>
 					</Form>
-				</div>
+				</>
 			)}
 		</div>
 	)

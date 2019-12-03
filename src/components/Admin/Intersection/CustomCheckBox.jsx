@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { TableCell, CheckBox } from 'grommet'
-import app from '../../utils/Base'
+import React, { useState } from 'react'
+import { CheckBox } from 'grommet'
+import { Loader } from 'rsuite'
+import app from '../../../utils/Base'
 
-const Intersection = ({ data, thatSchedule, id }) => {
-	const [checked, setChecked] = useState(false)
-	useEffect(() => {
-		if (Array.isArray(data) && data.indexOf('Trân') >= 0) {
-			setChecked(true)
-		}
-	}, [])
+const CustomCheckBox = ({ fromName, isChecked, thatSchedule, id }) => {
+	const [checked, setChecked] = useState(isChecked)
+	const [isLoading, setIsLoading] = useState(false)
 
 	const getWeekDay = id => {
 		switch (id) {
@@ -33,18 +30,19 @@ const Intersection = ({ data, thatSchedule, id }) => {
 
 	const handleOnChange = async e => {
 		setChecked(e.target.checked)
+		setIsLoading(true)
 		await app
 			.firestore()
 			.collection('luv-schedule')
 			.doc(thatSchedule.timeRange)
 			.get()
 			.then(async data => {
-				const weekDay = getWeekDay(id)
 				const oldData = data.data()
-				const oldDataWithName = data
-					.data()
-					[weekDay].filter(name => name !== 'Trân')
-				if (data.data()[weekDay].includes('Trân')) {
+				const weekDay = getWeekDay(id)
+				if (oldData[weekDay].includes(fromName)) {
+					const oldDataWithName = data
+						.data()
+						[weekDay].filter(name => name !== fromName)
 					await app
 						.firestore()
 						.collection('luv-schedule')
@@ -60,17 +58,22 @@ const Intersection = ({ data, thatSchedule, id }) => {
 						.doc(thatSchedule.timeRange)
 						.set({
 							...oldData,
-							[weekDay]: data.data()[weekDay].concat('Trân')
+							[weekDay]: data.data()[weekDay].concat(fromName)
 						})
 				}
+				setIsLoading(false)
 			})
 	}
-
-	return (
-		<TableCell>
-			<CheckBox checked={checked} onChange={handleOnChange} />
-		</TableCell>
+	return isLoading ? (
+		<Loader backdrop content='đang cập nhật...' vertical />
+	) : (
+		<CheckBox
+			checked={checked}
+			onChange={handleOnChange}
+			label={fromName}
+			style={{ margin: '0.15rem 0' }}
+		/>
 	)
 }
 
-export default Intersection
+export default CustomCheckBox

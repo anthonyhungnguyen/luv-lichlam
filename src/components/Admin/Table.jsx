@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Table, TableBody } from 'grommet'
-import HeaderRow from './Row/HeaderRow'
+import HeaderRow from '../User/Row/HeaderRow'
 import Row from './Row/Row'
-import app from '../utils/Base'
+import app from '../../utils/Base'
 
 const OurTable = () => {
 	const [schedules, setSchedules] = useState([])

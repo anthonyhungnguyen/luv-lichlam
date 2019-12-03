@@ -1,6 +1,6 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd'
-import app from '../utils/Base'
+import { Layout, Menu } from 'antd'
+import app from '../../utils/Base'
 import Table from './Table'
 
 const { Header, Content, Footer } = Layout
@@ -9,7 +9,6 @@ const Home = () => {
 	return (
 		<Layout className='layout' style={{ height: '100%' }}>
 			<Header>
-				<div className='logo' />
 				<Menu
 					theme='dark'
 					mode='horizontal'
@@ -25,14 +24,15 @@ const Home = () => {
 				style={{
 					display: 'flex',
 					justifyContent: 'center',
-					alignItems: 'center'
+					alignItems: 'center',
+					flexDirection: 'column'
 				}}
 			>
-				<div style={{ overflowX: 'scroll' }}>
+				<div style={{ overflow: 'auto', width: '100%' }}>
 					<Table />
 				</div>
 			</Content>
-			<Footer style={{ textAlign: 'center' }}>Designed by Phuc Hung</Footer>
+			<Footer style={{ textAlign: 'center' }}>Designed by ngph</Footer>
 		</Layout>
 	)
 }

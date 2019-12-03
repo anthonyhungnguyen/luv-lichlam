@@ -3,12 +3,10 @@ import { TableCell, TableRow } from 'grommet'
 import Intersection from '../Intersection/Intersection.jsx'
 const Row = ({ hour, thatSchedule }) => {
 	const [data, setData] = useState({})
-	const [isLoading, setIsLoading] = useState(false)
 	useEffect(() => {
 		fetchData()
 	}, [])
 	const fetchData = () => {
-		setIsLoading(true)
 		const thisData = {
 			thuhai: [],
 			thuba: [],
@@ -25,12 +23,9 @@ const Row = ({ hour, thatSchedule }) => {
 			}
 		})
 		setData(thisData)
-		setIsLoading(false)
 	}
 
-	return isLoading ? (
-		<div>Loading</div>
-	) : (
+	return (
 		<TableRow>
 			<TableCell scope='row'>
 				<strong>{hour}</strong>
