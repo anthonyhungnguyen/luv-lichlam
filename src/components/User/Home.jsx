@@ -45,7 +45,7 @@ const Home = () => {
 				</div>
 			</Content>
 			<Footer style={{ textAlign: 'center', backgroundColor: '#EEECDE' }}>
-				Designed by ngph
+				Designed by Hưng
 			</Footer>
 		</Layout>
 	)
