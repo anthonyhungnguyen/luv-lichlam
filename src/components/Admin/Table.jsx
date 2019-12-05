@@ -19,7 +19,7 @@ const OurTable = () => {
 					...doc.data(),
 					timeRange: doc.id
 				}))
-				setSchedules(newSchedule)
+				setSchedules(newSchedule.reverse())
 			})
 	}
 	return (

@@ -11,7 +11,7 @@ import 'rsuite/dist/styles/rsuite-default.css'
 function App() {
 	return (
 		<AuthProvider>
-			<ParticlesBg type='random' bg={true} num={8} />
+			<ParticlesBg type='square' bg={true} num={8} />
 			<Router>
 				<PrivateRoute exact path='/' component={Home} />
 				<PrivateRoute exact path='/admin' component={Admin} />
