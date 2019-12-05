@@ -10,7 +10,7 @@ const Intersection = ({ data, thatSchedule, id }) => {
 				if (data.includes(sname)) {
 					return (
 						<CustomCheckBox
-							name={sname}
+							fromName={sname}
 							isChecked={true}
 							thatSchedule={thatSchedule}
 							id={id}

@@ -46,19 +46,37 @@ const Home = () => {
 	return isLoading ? (
 		<Loader backdrop content='đang tải...' vertical />
 	) : (
-		<Layout className='layout' style={{ height: '100%' }}>
-			<Header>
+		<Layout
+			className='layout'
+			style={{ height: '100%', backgroundColor: '#EEECDE' }}
+		>
+			<Header
+				style={{
+					backgroundColor: '#EEBE70'
+				}}
+			>
 				<div className='logo' />
 				<Menu
 					theme='dark'
 					mode='horizontal'
 					defaultSelectedKeys={['1']}
-					style={{ lineHeight: '64px', float: 'right' }}
+					style={{
+						lineHeight: '64px',
+						float: 'right'
+					}}
 				>
-					<Menu.Item key='0' onClick={handleChangeLock}>
+					<Menu.Item
+						key='0'
+						onClick={handleChangeLock}
+						style={{ backgroundColor: '#BF8179', color: '#FFFFFF' }}
+					>
 						{canEdit ? 'Đóng khóa' : 'Mở khóa'}
 					</Menu.Item>
-					<Menu.Item key='1' onClick={() => app.auth().signOut()}>
+					<Menu.Item
+						key='1'
+						onClick={() => app.auth().signOut()}
+						style={{ backgroundColor: '#FFFFFF', color: '#B37231' }}
+					>
 						Đăng xuất
 					</Menu.Item>
 				</Menu>
@@ -68,14 +86,17 @@ const Home = () => {
 					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
-					flexDirection: 'column'
+					flexDirection: 'column',
+					padding: '0 50px'
 				}}
 			>
 				<div style={{ overflow: 'auto', width: '100%' }}>
 					<Table />
 				</div>
 			</Content>
-			<Footer style={{ textAlign: 'center' }}>Designed by ngph</Footer>
+			<Footer style={{ textAlign: 'center', backgroundColor: '#EEECDE' }}>
+				Designed by ngph
+			</Footer>
 		</Layout>
 	)
 }

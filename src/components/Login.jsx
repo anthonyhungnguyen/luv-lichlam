@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useState } from 'react'
 import { withRouter, Redirect } from 'react-router'
-import { Loader } from 'rsuite'
+import { Loader, Alert } from 'rsuite'
 import app from '../utils/Base'
 import { AuthContext } from '../utils/Auth'
 import { Form, Icon, Input, Button } from 'antd'
@@ -28,7 +28,8 @@ const Login = ({ history, form }) => {
 								}
 							})
 					} catch (error) {
-						alert(error)
+						Alert.warning('Sai tài khoản hoặc mật khẩu')
+						history.push('/')
 					}
 				}
 			})
@@ -64,7 +65,7 @@ const Login = ({ history, form }) => {
 				<>
 					<img
 						src={require('./logo.jpg')}
-						style={{ maxWidth: '200px', margin: 'center' }}
+						style={{ maxWidth: '200px', margin: '20px 0' }}
 					/>
 					<Form onSubmit={handleLogin} className='login-form'>
 						<Form.Item>
@@ -99,6 +100,7 @@ const Login = ({ history, form }) => {
 								type='primary'
 								htmlType='submit'
 								className='login-form-button'
+								style={{ backgroundColor: '#E5B951', borderColor: '#E5B951' }}
 							>
 								Đăng nhập
 							</Button>

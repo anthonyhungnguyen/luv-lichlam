@@ -6,10 +6,12 @@ import SignUp from './components/SignUp'
 import { AuthProvider } from './utils/Auth'
 import PrivateRoute from './components/PrivateRoute'
 import Admin from './components/Admin/Admin'
+import ParticlesBg from 'particles-bg'
 import 'rsuite/dist/styles/rsuite-default.css'
 function App() {
 	return (
 		<AuthProvider>
+			<ParticlesBg type='random' bg={true} num={8} />
 			<Router>
 				<PrivateRoute exact path='/' component={Home} />
 				<PrivateRoute exact path='/admin' component={Admin} />
