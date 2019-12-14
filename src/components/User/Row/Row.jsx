@@ -48,7 +48,7 @@ const Row = ({ hour, thatSchedule }) => {
 		}
 
 		Object.keys(thatSchedule).forEach((item, i) => {
-			if (item !== 'timeRange') {
+			if (item !== 'timeRange' && item !== 'id') {
 				thisData[item] = thatSchedule[item]
 			}
 		})
